@@ -2,21 +2,30 @@ import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 
+@Serializable
+class Test(val a : Int) {
+    init {
+        println(a)
+    }
+}
+
 fun main() {
-    var me = PlayerCharacter("Leaf on the Wind", Race.from("Half  Elf"), DClass.from("RaNg  er"), "Joel Courtney")
-    me.level = 5
-    me.appearance.add("White fur")
-    me.appearance.add("Brown and black spots")
-
-    me.inventory.add("Javelin of Lightning")
-//    println(me.summary())
-
-    var zemnianNights = Campaign("Zemnian Nights")
-    zemnianNights.dm = "Dan Walton"
-    zemnianNights.pcs.add(me)
-//    println(zemnianNights.summary())
-    val dnd = DnD()
-    dnd.run()
+    val test = Json.parse(Test.serializer(),"{a:5}")
+    println(test.a)
+//    var me = PlayerCharacter("Leaf on the Wind", Race.from("Half  Elf"), DClass.from("RaNg  er"), "Joel Courtney")
+//    me.level = 5
+//    me.appearance.add("White fur")
+//    me.appearance.add("Brown and black spots")
+//
+//    me.inventory.add("Javelin of Lightning")
+////    println(me.summary())
+//
+//    var zemnianNights = Campaign("Zemnian Nights")
+//    zemnianNights.dm = "Dan Walton"
+//    zemnianNights.pcs.add(me)
+////    println(zemnianNights.summary())
+//    val dnd = DnD()
+//    dnd.run()
 }
 
 class DnD {
@@ -33,10 +42,7 @@ class DnD {
                     "help" -> help(line.subList(1, line.size))
                     "play" -> play(line.subList(1, line.size).joinToString(" "))
                     "new" -> new(line.subList(1, line.size))
-                    "delete" -> {}
-                    "edit" -> {}
-                    "sum" -> {}
-
+                    "view" -> view(line.subList(1, line.size))
                     else -> println("Unrecognized: " + line[0])
                 }
             } else {
@@ -97,6 +103,31 @@ class DnD {
                 "place" -> {
                 }
                 else -> println("Unrecognized: " + what[0])
+            }
+        }
+    }
+
+    fun view(what: List<String>) {
+        if (what.size == 1) {
+            when (what[0]) {
+                "npc" -> {
+                    print("Search by: ")
+                    val search = readLine()!!.toLowerCase().replace(" ","")
+                    when (search) {
+                        "name" -> {
+                            print(": ")
+                            val name = readLine()!!.replace(" ", "")
+                            val possible = activeCampaign!!.npcs.filter{it.name.replace(" ","").contains(name, true)}
+                            when (possible.size) {
+                                0 -> println("None found")
+                                1 -> println(possible[0].summary())
+                                else -> {
+
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

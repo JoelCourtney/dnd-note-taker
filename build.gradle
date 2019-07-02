@@ -29,6 +29,7 @@ dependencies {
 }
 
 compileKotlin {
+    kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlinx.serialization.UnstableDefault"]
     kotlinOptions.jvmTarget = "1.8"
 }
 compileTestKotlin {

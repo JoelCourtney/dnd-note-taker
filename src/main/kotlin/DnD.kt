@@ -12,6 +12,7 @@ class Test(val a : Int) {
 fun main() {
     val test = Json.parse(Test.serializer(),"{a:5}")
     println(test.a)
+
 //    var me = PlayerCharacter("Leaf on the Wind", Race.from("Half  Elf"), DClass.from("RaNg  er"), "Joel Courtney")
 //    me.level = 5
 //    me.appearance.add("White fur")

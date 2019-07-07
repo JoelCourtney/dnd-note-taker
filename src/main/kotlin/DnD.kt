@@ -52,7 +52,7 @@ class DnD {
                     "help" -> help(line.subList(1, line.size))
                     "play" -> play(line.subList(1, line.size).joinToString("").toLowerCase())
                     "new" -> new(line.subList(1, line.size))
-                    "npc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.npcs)
+                    "char", "character", "person", "npc", "pc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.chars, line[0].toLowerCase())
                     else -> println("Unrecognized: " + line[0])
                 }
             }
@@ -77,22 +77,30 @@ class DnD {
                             println("enter a flippin name, son.")
                             new(what)
                         }
-                        activeCampaign = Campaign()
-                        activeCampaign!!.name = name
-                        activeCampaign!!.dm = getResponse("DM")
+                        activeCampaign = Campaign(name, getResponse("DM"))
                     }
-                    "npc" -> {
+                    "char", "character", "person", "npc" -> {
                         if (activeCampaign != null) {
-                            val npc = Character()
-                            npc.name = getResponse("Name")
-                            npc.race = Race.from(getResponse("Race"))
-                            npc.dClass = DClass.from(getResponse("Class"))
-                            activeCampaign!!.npcs.add(npc)
+                            val char = Character()
+                            char.name = getResponse("Name")
+                            char.race = Race.from(getResponse("Race"))
+                            char.dClass = DClass.from(getResponse("Class"))
+                            activeCampaign!!.chars.add(char)
+                            edit()
                         } else {
                             println("Please select a campaign first.")
                         }
                     }
                     "pc" -> {
+                        if (activeCampaign != null) {
+                            val char = Character()
+                            char.playedBy = getResponse("Player")
+                            char.name = getResponse("Name")
+                            char.race = Race.from(getResponse("Race"))
+                            char.dClass = DClass.from(getResponse("Class"))
+                            activeCampaign!!.chars.add(char)
+                            edit()
+                        }
                     }
                     "place" -> {
                     }

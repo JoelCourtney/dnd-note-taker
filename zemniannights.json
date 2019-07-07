@@ -1,17 +1,16 @@
 {
     "name": "Zemnian Nights",
     "dm": "Dan Walton",
-    "pcs": [
-    ],
-    "npcs": [
+    "chars": [
         {
+            "playedBy": "NPC",
             "name": "Diego Muller",
             "race": "GNOME",
             "dClass": "UNKNOWN",
             "level": null,
             "alignment": {
                 "disposition": "LAWFUL",
-                "morality": "EVIL"
+                "morality": "NEUTRAL"
             },
             "inventory": [
                 "lightning javelin",
@@ -26,10 +25,35 @@
             "relationship": "boss"
         },
         {
-            "name": "Diego's Double",
-            "race": "DRAGONBORN",
-            "dClass": "CLERIC",
-            "level": null,
+            "playedBy": "Brendan Haines",
+            "name": "Jigsaw",
+            "race": "WARFORGED",
+            "dClass": "ARTIFICER",
+            "level": 5,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Cloak of Protection",
+                "Rope of Climbing"
+            ],
+            "traits": [
+                "male",
+                "envoy, unknown specialty",
+                "fairly light, thin chassis"
+            ],
+            "notes": [
+            ],
+            "status": "friendly, healthy",
+            "relationship": "party member"
+        },
+        {
+            "playedBy": "Anastasia Muszynski",
+            "name": "Leza Talmolzi",
+            "race": "CHANGELING",
+            "dClass": "SORCERER",
+            "level": 5,
             "alignment": {
                 "disposition": "UNKNOWN",
                 "morality": "UNKNOWN"
@@ -37,11 +61,91 @@
             "inventory": [
             ],
             "traits": [
+                "female"
+            ],
+            "notes": [
+                "Can change appearance very quickly"
+            ],
+            "status": "unhealthy, possibly wanted",
+            "relationship": "party member"
+        },
+        {
+            "playedBy": "Joel Courtney",
+            "name": "Leaf on the Wind",
+            "race": "TABAXI",
+            "dClass": "RANGER",
+            "level": 5,
+            "alignment": {
+                "disposition": "NEUTRAL",
+                "morality": "GOOD"
+            },
+            "inventory": [
+                "Javelin of Lightning",
+                "key to room 803",
+                "un-striped metal mask"
+            ],
+            "traits": [
+                "former private of Blues and Royals",
+                "Male",
+                "29",
+                "130 pounds",
+                "worships the Raven Queen",
+                "White fur, brown and black spots",
+                "hates water",
+                "loves fish"
+            ],
+            "notes": [
+                "Goes by brother's name, Ash on the Wind"
+            ],
+            "status": "wanted",
+            "relationship": "self"
+        },
+        {
+            "playedBy": "Allyson Wheaton",
+            "name": "Astra Killian",
+            "race": "AASIMAR",
+            "dClass": "PALADIN",
+            "level": 5,
+            "alignment": {
+                "disposition": "LAWFUL",
+                "morality": "GOOD"
+            },
+            "inventory": [
+                "Gauntlets of Ogre Power"
+            ],
+            "traits": [
+                "dark gold eyes",
+                "female",
+                "very charismatic",
+                "quite swol"
+            ],
+            "notes": [
+                "goes by Kathryn Clarian"
+            ],
+            "status": "friendly, healthy",
+            "relationship": "party member"
+        },
+        {
+            "playedBy": "Ella Wawrzynek",
+            "name": "Azure",
+            "race": "ELF",
+            "dClass": "FIGHTER",
+            "level": 5,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Broom of Flying",
+                "Key to 802"
+            ],
+            "traits": [
+                "Blue"
             ],
             "notes": [
             ],
-            "status": "fake",
-            "relationship": "boss's stunt double"
+            "status": "healthy",
+            "relationship": "party member"
         }
     ],
     "quests": [

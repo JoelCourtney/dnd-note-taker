@@ -1,0 +1,55 @@
+{
+    "name": "Zemnian Nights",
+    "dm": "Dan Walton",
+    "pcs": [
+    ],
+    "npcs": [
+        {
+            "name": "Diego Muller",
+            "race": "GNOME",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "LAWFUL",
+                "morality": "EVIL"
+            },
+            "inventory": [
+                "lightning javelin",
+                "asdf"
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "We are in a contract with him to find a package of batteries and steal it"
+            ],
+            "status": "unknown",
+            "relationship": "boss"
+        },
+        {
+            "name": "Diego's Double",
+            "race": "DRAGONBORN",
+            "dClass": "CLERIC",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "fake",
+            "relationship": "boss's stunt double"
+        }
+    ],
+    "quests": [
+    ],
+    "events": [
+    ],
+    "places": [
+    ],
+    "quotes": [
+    ]
+}

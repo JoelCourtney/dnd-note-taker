@@ -1,133 +1,169 @@
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-
-@Serializable
-class Test(val a : Int) {
-    init {
-        println(a)
-    }
-}
+import java.io.File
+import kotlin.system.exitProcess
 
 fun main() {
-    val test = Json.parse(Test.serializer(),"{a:5}")
-    println(test.a)
-
-//    var me = PlayerCharacter("Leaf on the Wind", Race.from("Half  Elf"), DClass.from("RaNg  er"), "Joel Courtney")
-//    me.level = 5
-//    me.appearance.add("White fur")
-//    me.appearance.add("Brown and black spots")
-//
-//    me.inventory.add("Javelin of Lightning")
-////    println(me.summary())
-//
-//    var zemnianNights = Campaign("Zemnian Nights")
-//    zemnianNights.dm = "Dan Walton"
-//    zemnianNights.pcs.add(me)
-////    println(zemnianNights.summary())
-//    val dnd = DnD()
-//    dnd.run()
+    DnD.run()
 }
 
 class DnD {
-    var activeCampaign: Campaign? = null
-    var campaigns = mutableListOf<Campaign>()
+    companion object {
+        private var activeCampaign: Campaign? = null
+        private var edited: Boolean = false
 
-    fun run() {
-        while (true) {
-            print(">> ")
-            val line = readLine()?.split(" ")
-            if (line != null) {
-                when (line[0]) {
+        private val json = Json(JsonConfiguration(prettyPrint = true))
+
+        fun edit() {
+            edited = true
+        }
+
+        fun getCommand(prompt: String = ""): List<String> {
+            if (edited && activeCampaign != null) {
+                val jsonData = json.stringify(Campaign.serializer(), activeCampaign!!)
+                File("${activeCampaign!!.name.toLowerCase().replace(" ", "")}.json").writeText(jsonData)
+                edited = false
+            }
+            if (prompt.isNotEmpty())
+                print("\n$prompt >> ")
+            else
+                print("\n>> ")
+            val input = readLine()
+            if (input != null) return input.trim(' ').split(" ")
+            else exitProcess(0)
+        }
+
+        fun getResponse(prompt: String = ""): String {
+            if (prompt.isNotEmpty())
+                print("$prompt: ")
+            else
+                print(": ")
+            val input = readLine()
+            if (input != null) return input.trim(' ')
+            else exitProcess(0)
+        }
+
+        fun run() {
+            while (true) {
+                val line = getCommand()
+                when (line[0].toLowerCase()) {
                     "" -> println("No command")
                     "help" -> help(line.subList(1, line.size))
-                    "play" -> play(line.subList(1, line.size).joinToString(" "))
+                    "play" -> play(line.subList(1, line.size).joinToString("").toLowerCase())
                     "new" -> new(line.subList(1, line.size))
-                    "view" -> view(line.subList(1, line.size))
+                    "npc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.npcs)
                     else -> println("Unrecognized: " + line[0])
                 }
-            } else {
-                return
             }
         }
-    }
 
-    fun help(what: List<String>) {
-        if (what.isEmpty()) {
-            println("helpy help")
-        }
-    }
-
-    fun play(what: String) {
-        for (camp in campaigns) {
-            if (camp.name == what) {
-                activeCampaign = camp
-                return
+        fun help(what: List<String>) {
+            if (what.isEmpty()) {
+                println("helpy help")
             }
         }
-        println("Campaign not found")
-    }
 
-    fun new(what: List<String>) {
-        if (what.size == 1) {
-            when (what[0]) {
-                "campaign" -> {
-                    print("Name: ")
-                    val name = readLine()
-                    if (name != null) {
+        fun play(what: String) {
+            activeCampaign = json.parse(Campaign.serializer(), File("${what.replace(" ", "")}.json").readText())
+        }
+
+        fun new(what: List<String>) {
+            if (what.size == 1) {
+                when (what[0]) {
+                    "campaign" -> {
+                        val name = getResponse("Name")
                         if (name.isEmpty()) {
                             println("enter a flippin name, son.")
                             new(what)
                         }
-                        var camp = Campaign(name)
-                        print("DM: ")
-                        camp.dm = readLine()?:""
-                        campaigns.add(camp)
+                        activeCampaign = Campaign()
+                        activeCampaign!!.name = name
+                        activeCampaign!!.dm = getResponse("DM")
                     }
-                }
-                "npc" -> {
-                    if (activeCampaign != null) {
-                        print("Name: ")
-                        val name = readLine() ?: "Unknown"
-                        print("Race: ")
-                        val race = Race.from(readLine() ?: "unknown")
-                        print("Class: ")
-                        val dClass = DClass.from(readLine() ?: "unknown")
-                        var npc = Character(name, race, dClass)
-                        activeCampaign!!.npcs.add(npc)
-                    } else {
-                        println("Please select a campaign first.")
-                    }
-                }
-                "pc" -> {
-                }
-                "place" -> {
-                }
-                else -> println("Unrecognized: " + what[0])
-            }
-        }
-    }
-
-    fun view(what: List<String>) {
-        if (what.size == 1) {
-            when (what[0]) {
-                "npc" -> {
-                    print("Search by: ")
-                    val search = readLine()!!.toLowerCase().replace(" ","")
-                    when (search) {
-                        "name" -> {
-                            print(": ")
-                            val name = readLine()!!.replace(" ", "")
-                            val possible = activeCampaign!!.npcs.filter{it.name.replace(" ","").contains(name, true)}
-                            when (possible.size) {
-                                0 -> println("None found")
-                                1 -> println(possible[0].summary())
-                                else -> {
-
-                                }
-                            }
+                    "npc" -> {
+                        if (activeCampaign != null) {
+                            val npc = Character()
+                            npc.name = getResponse("Name")
+                            npc.race = Race.from(getResponse("Race"))
+                            npc.dClass = DClass.from(getResponse("Class"))
+                            activeCampaign!!.npcs.add(npc)
+                        } else {
+                            println("Please select a campaign first.")
                         }
                     }
+                    "pc" -> {
+                    }
+                    "place" -> {
+                    }
+                    else -> println("Unrecognized: " + what[0])
+                }
+            }
+        }
+
+        fun <T : Summarizable> search(list: List<T>, with: (T) -> Boolean): T? {
+            val possible = list.filter(with)
+            return when (possible.size) {
+                0 -> {
+                    println("None found")
+                    null
+                }
+                1 -> {
+                    possible[0]
+                }
+                else -> {
+                    var i = 1
+                    for (p in possible) {
+                        println("\n${i++}: ${p.summary()}")
+                    }
+                    val which = (getResponse("\nSelect one")).toInt()
+                    if (possible.size >= which)
+                        possible[which - 1]
+                    else {
+                        println("Index out of bounds")
+                        null
+                    }
+                }
+            }
+        }
+
+        fun <T : Summarizable> searchIndex(list: List<T>, with: (T) -> Boolean): Int? {
+            val possible = list.filter(with)
+            return when (possible.size) {
+                0 -> {
+                    println("None found")
+                    null
+                }
+                1 -> {
+                    list.indexOf(possible[0])
+                }
+                else -> {
+                    var i = 1
+                    for (p in possible) {
+                        println("\n${i++}: ${p.summary()}")
+                    }
+                    list.indexOf(possible[getResponse("\nSelect one").toInt() - 1])
+                }
+            }
+        }
+
+        @JvmName("searchIndexString")
+        fun searchIndex(list: List<String>, with: (String) -> Boolean): Int? {
+            val possible = list.filter(with)
+            return when (possible.size) {
+                0 -> {
+                    println("None found")
+                    null
+                }
+                1 -> {
+                    list.indexOf(possible[0])
+                }
+                else -> {
+                    var i = 1
+                    for (p in possible) {
+                        println("\n${i++}: $p")
+                    }
+                    list.indexOf(possible[getResponse("\nSelect one").toInt() - 1])
                 }
             }
         }

@@ -1,3 +1,6 @@
+import kotlinx.serialization.Serializable
+
+@Serializable
 class Alignment(val disposition: Disposition, val morality: Morality) {
     enum class Disposition(val type: String) {
         LAWFUL("Lawful"),
@@ -23,6 +26,25 @@ class Alignment(val disposition: Disposition, val morality: Morality) {
             "Unknown"
         } else {
             "${disposition.type} ${morality.type}"
+        }
+    }
+
+    companion object {
+        fun from(what: String): Alignment {
+            return when (what) {
+                "unknown" -> Alignment(Disposition.UNKNOWN, Morality.UNKNOWN)
+                "neutral", "true neutral" -> Alignment(Disposition.NEUTRAL, Morality.NEUTRAL)
+                else -> {
+                    val list = what.split(" ")
+                    if (list.size == 2) {
+                        val disp = Disposition.valueOf(list[0].toUpperCase())
+                        val mor = Morality.valueOf(list[1].toUpperCase())
+                        Alignment(disp, mor)
+                    } else {
+                        Alignment(Disposition.UNKNOWN, Morality.UNKNOWN)
+                    }
+                }
+            }
         }
     }
 }

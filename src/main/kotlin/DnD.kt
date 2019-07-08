@@ -25,10 +25,18 @@ class DnD {
                 File("${activeCampaign!!.name.toLowerCase().replace(" ", "")}.json").writeText(jsonData)
                 edited = false
             }
-            if (prompt.isNotEmpty())
-                print("\n$prompt >> ")
-            else
-                print("\n>> ")
+            print("\n${
+                if (activeCampaign != null)
+                    "${activeCampaign!!.name} "
+                else
+                    ""
+                }>${
+                    if (prompt.isNotEmpty())
+                        " $prompt "
+                    else
+                        ""
+                }> "
+            )
             val input = readLine()
             if (input != null) return input.trim(' ').split(" ")
             else exitProcess(0)
@@ -53,6 +61,13 @@ class DnD {
                     "play" -> play(line.subList(1, line.size).joinToString("").toLowerCase())
                     "new" -> new(line.subList(1, line.size))
                     "char", "character", "person", "npc", "pc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.chars, line[0].toLowerCase())
+                    "place", "loc", "location" -> Place.view(line.subList(1,line.size).joinToString(""), activeCampaign!!.places)
+                    "dump" -> println(activeCampaign?.dump())
+                    "xyzzy" -> {
+                        val list = activeCampaign!!.dump().toMutableList()
+                        list.shuffle()
+                        println(list.joinToString(""))
+                    }
                     else -> println("Unrecognized: " + line[0])
                 }
             }
@@ -100,9 +115,18 @@ class DnD {
                             char.dClass = DClass.from(getResponse("Class"))
                             activeCampaign!!.chars.add(char)
                             edit()
+                        } else {
+                            println("Please select a campaign first.")
                         }
                     }
-                    "place" -> {
+                    "loc", "location", "place" -> {
+                        if (activeCampaign != null) {
+                            val place = Place(getResponse("Name"),getResponse("Location"))
+                            activeCampaign!!.places.add(place)
+                            edit()
+                        } else {
+                            println("Please select a campaign first")
+                        }
                     }
                     else -> println("Unrecognized: " + what[0])
                 }

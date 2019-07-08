@@ -110,6 +110,15 @@ class Character : Summarizable {
                 "note", "notes" -> {
                     DnD.search(chars) {it.notes.joinToString("").contains(with,true)}
                 }
+                "level", "lvl", "lev" -> {
+                    DnD.search(chars) {it.level == with.toInt()}
+                }
+                "stat", "status" -> {
+                    DnD.search(chars) {it.status.contains(with, true)}
+                }
+                "rel", "relation", "relationship" -> {
+                    DnD.search(chars) {it.relationship.contains(with, true)}
+                }
                 else -> null
             }
             if (char != null) {
@@ -123,7 +132,7 @@ class Character : Summarizable {
                             "name" -> println(char.name)
                             "race" -> println(char.race.toString())
                             "class" -> println(char.dClass.toString())
-                            "level" -> println(char.level)
+                            "lvl", "lev", "level" -> println(char.level)
                             "align", "alignment" -> println(char.alignment.toString())
                             "stat", "status" -> println(char.status)
                             "rel", "relation", "relationship" -> println(char.relationship)
@@ -139,6 +148,12 @@ class Character : Summarizable {
                                     println("${i++}: $trait")
                                 }
                             }
+                            "note", "notes" -> {
+                                var i = 1
+                                for (note in char.notes) {
+                                    println("${i++}: $note")
+                                }
+                            }
                             "", "done", "save", "exit" -> break@loop
                             else -> println("Unrecognized command: $command")
                         }
@@ -149,7 +164,7 @@ class Character : Summarizable {
                             "name", "rename" -> char.name = command.subList(1,command.size).joinToString(" ")
                             "race" -> char.race = Race.from(command.subList(1,command.size).joinToString())
                             "class" -> char.dClass = DClass.from(command.subList(1,command.size).joinToString())
-                            "level" -> char.level = command.subList(1,command.size).joinToString().toInt()
+                            "lvl", "lev", "level" -> char.level = command.subList(1,command.size).joinToString().toInt()
                             "align", "alignment" -> char.alignment = Alignment.from(command.subList(1,command.size).joinToString(" "))
                             "stat", "status" -> char.status = command.subList(1,command.size).joinToString(" ")
                             "rel", "relation", "relationship" -> char.relationship = command.subList(1,command.size).joinToString(" ")

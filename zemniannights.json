@@ -151,6 +151,23 @@
     "events": [
     ],
     "places": [
+        {
+            "name": "Zemnia",
+            "location": "Southeast coast of Borelgai",
+            "notes": [
+                "Hostile toward magic (which is illegal)",
+                "Once independent, now under the Republic of Fellsmarch",
+                "Known as the Gateway to the Endless Sea"
+            ]
+        },
+        {
+            "name": "Hanalea",
+            "location": "High Fells, northeast Borelgai",
+            "notes": [
+                "Fairly friendly to magic",
+                "Has a monarchy, mostly independent from the Republic"
+            ]
+        }
     ],
     "quotes": [
     ]

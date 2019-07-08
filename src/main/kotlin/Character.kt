@@ -96,10 +96,19 @@ class Character : Summarizable {
                     DnD.search(chars) {it.playedBy.replace(" ", "").contains(with, true)}
                 }
                 "race" -> {
-                    DnD.search(chars) {it.race == Race.from(with)}
+                    DnD.search(chars) {it.race.type.contains(with,true)}
                 }
                 "class" -> {
-                    DnD.search(chars) {it.dClass == DClass.from(with)}
+                    DnD.search(chars) {it.dClass.type.contains(with,true)}
+                }
+                "inv", "inventory", "item", "items" -> {
+                    DnD.search(chars) {it.inventory.joinToString("").contains(with, true)}
+                }
+                "trait", "traits", "desc", "description", "app", "appearance", "describe", "personality", "person" -> {
+                    DnD.search(chars) {it.traits.joinToString("").contains(with,true)}
+                }
+                "note", "notes" -> {
+                    DnD.search(chars) {it.notes.joinToString("").contains(with,true)}
                 }
                 else -> null
             }

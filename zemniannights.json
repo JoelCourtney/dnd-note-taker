@@ -62,7 +62,8 @@
                 "female"
             ],
             "notes": [
-                "Can change appearance very quickly"
+                "Can change appearance very quickly",
+                "Goes by Eloise i think"
             ],
             "status": "unhealthy, possibly wanted",
             "relationship": "party member"
@@ -144,6 +145,51 @@
             ],
             "status": "healthy",
             "relationship": "party member"
+        },
+        {
+            "playedBy": "Zach Klaus",
+            "name": "Hans Friedrich Wolfgang III",
+            "race": "HUMAN",
+            "dClass": "ARTIFICER",
+            "level": 5,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Gloves of Missile Snaring",
+                "Alchemical Homunculus"
+            ],
+            "traits": [
+                "usually drunk"
+            ],
+            "notes": [
+                "exchange booze for friendship"
+            ],
+            "status": "drunk",
+            "relationship": "party member"
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Ash on the Wind",
+            "race": "TABAXI",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "CHAOTIC",
+                "morality": "GOOD"
+            },
+            "inventory": [
+                "(used to own) Leaf's Javelin of Lightning"
+            ],
+            "traits": [
+                "has a hard time distinguishing revenge from justice"
+            ],
+            "notes": [
+                "might have started a revolution. its an issue"
+            ],
+            "status": "unknown",
+            "relationship": "brother"
         }
     ],
     "quests": [

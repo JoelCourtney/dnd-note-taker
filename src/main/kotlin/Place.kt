@@ -14,7 +14,7 @@ data class Place(var name: String, var location: String = "", val notes: ArrayLi
         var res: String = ""
         res += "Name: $name"
         res += "\nLocation: $location"
-        if (!notes.isEmpty()) {
+        if (notes.isNotEmpty()) {
             res += "\n\nNotes:"
             for (note in notes) {
                 res += "\n$note"

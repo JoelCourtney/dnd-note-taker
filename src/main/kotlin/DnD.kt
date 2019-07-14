@@ -62,6 +62,7 @@ class DnD {
                     "new" -> new(line.subList(1, line.size))
                     "char", "character", "person", "npc", "pc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.chars, line[0].toLowerCase())
                     "place", "loc", "location" -> Place.view(line.subList(1,line.size).joinToString(""), activeCampaign!!.places)
+                    "quest", "mission", "objective" -> Quest.view(line.subList(1,line.size).joinToString(""), activeCampaign!!.quests)
                     "dump" -> println(activeCampaign?.dump())
                     "xyzzy" -> {
                         val list = activeCampaign!!.dump().toMutableList()
@@ -123,6 +124,15 @@ class DnD {
                         if (activeCampaign != null) {
                             val place = Place(getResponse("Name"),getResponse("Location"))
                             activeCampaign!!.places.add(place)
+                            edit()
+                        } else {
+                            println("Please select a campaign first")
+                        }
+                    }
+                    "quest", "mission", "objective" -> {
+                        if (activeCampaign != null) {
+                            val quest = Quest(getResponse("Goal"),getResponse("Given by"))
+                            activeCampaign!!.quests.add(quest)
                             edit()
                         } else {
                             println("Please select a campaign first")

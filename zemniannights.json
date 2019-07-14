@@ -59,7 +59,8 @@
             "inventory": [
             ],
             "traits": [
-                "female"
+                "female",
+                "5' 6\""
             ],
             "notes": [
                 "Can change appearance very quickly",
@@ -91,7 +92,8 @@
                 "worships the Raven Queen",
                 "White fur, brown and black spots",
                 "hates water",
-                "loves fish"
+                "loves fish",
+                "6' 1\""
             ],
             "notes": [
                 "Goes by brother's name, Ash on the Wind"
@@ -190,9 +192,223 @@
             ],
             "status": "unknown",
             "relationship": "brother"
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Father Leore",
+            "race": "HUMAN",
+            "dClass": "CLERIC",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Corporal Leery",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "mage killer squad"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Corporal Selman",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Bitchin Sniper Rifle"
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "mage killer squad"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Corporal Bruner",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "mage killer squad"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Sergant Rain",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Mage Killer Squad"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Audra",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "some kind of leader for the hazers"
+            ],
+            "status": "",
+            "relationship": "hostile"
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Leara",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Leader of sorts for the hazers"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Otto Dyne",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Bryn",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Cook for the Rookery. Been here a while"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "William",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Bartender for the Rookery"
+            ],
+            "status": "",
+            "relationship": ""
         }
     ],
     "quests": [
+        {
+            "goal": "steal the batteries",
+            "givenBy": "Diego Muller",
+            "status": "Incomplete",
+            "notes": [
+                "stolen first by masked men \"hazers\""
+            ]
+        },
+        {
+            "goal": "find out what the hazers want",
+            "givenBy": "self",
+            "status": "Incomplete",
+            "notes": [
+            ]
+        }
     ],
     "events": [
     ],
@@ -212,6 +428,38 @@
             "notes": [
                 "Fairly friendly to magic",
                 "Has a monarchy, mostly independent from the Republic"
+            ]
+        },
+        {
+            "name": "Andromedon",
+            "location": "middle of the Hollows",
+            "notes": [
+                "unusually high number of masked men",
+                "hospital"
+            ]
+        },
+        {
+            "name": "The Rookery",
+            "location": "the hollows",
+            "notes": [
+                "is bar"
+            ]
+        },
+        {
+            "name": "The Waterways",
+            "location": "Zemnia",
+            "notes": [
+                "connected to the sea",
+                "entrance from the Rookery",
+                "lies on half-cardinal directions"
+            ]
+        },
+        {
+            "name": "Mariner's Fist",
+            "location": "Center of Zemnia",
+            "notes": [
+                "Central spire (butte) in Zemnia",
+                "500 yd tall, 1 mile wide"
             ]
         }
     ],

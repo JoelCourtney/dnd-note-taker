@@ -10,34 +10,109 @@ data class Campaign (
     val places: ArrayList<Place> = arrayListOf(),
     val quotes: ArrayList<Quote> = arrayListOf()
 ) {
-    fun dump(): String {
+    private fun dump(): String {
         var res: String = ""
         res += "Name: $name"
         res += "\nDM: $dm"
-        if (!chars.isEmpty()) {
+        if (chars.isNotEmpty()) {
             res += "\n\n***CHARACTERS***"
             for (char in chars) {
                 res += "\n${char.dump()}"
             }
         }
-        if (!quests.isEmpty()) {
+        if (quests.isNotEmpty()) {
             res += "\n\n***QUESTS***"
             for (quest in quests) {
-                res += "\n$quest"
+                res += "\n${quest.dump()}"
             }
         }
-        if (!events.isEmpty()) {
+        if (events.isNotEmpty()) {
             res += "\n\n***EVENTS***"
             for (event in events) {
                 res += "\n$event"
             }
         }
-        if (!places.isEmpty()) {
+        if (places.isNotEmpty()) {
             res += "\n\n***PLACES***"
             for (place in places) {
                 res += "\n${place.dump()}"
             }
         }
         return res
+    }
+
+    fun view() {
+        while (true) {
+            val line = DnD.getCommand()
+            when (line[0].toLowerCase()) {
+                "" -> println("No command")
+                "new" -> new(line.subList(1, line.size))
+                "char", "character", "person", "npc", "pc" -> Character.search(line.subList(1, line.size).joinToString(""), chars, line[0].toLowerCase())
+                "place", "loc", "location" -> Place.search(line.subList(1,line.size).joinToString(""), places)
+                "quest", "mission", "objective" -> Quest.search(line.subList(1,line.size).joinToString(""), quests)
+                "dump" -> println(dump())
+                "xyzzy" -> {
+                    val list = dump().toMutableList()
+                    list.shuffle()
+                    println(list.joinToString(""))
+                }
+                "chars", "characters", "people", "npcs", "pcs" -> {
+                    for (char in chars.sortedBy{it.name})
+                        println(char.name)
+                }
+                "places", "locs", "locations" -> {
+                    for (place in places.sortedBy{it.name})
+                        println(place.name)
+                }
+                "quests", "missions", "objectives" -> {
+                    for (quest in quests.sortedBy{it.status})
+                        println(quest.goal)
+                }
+                "events", "plot" -> {
+                    for (event in events)
+                        println(event.what)
+                }
+                else -> println("Unrecognized: " + line[0])
+            }
+        }
+    }
+
+    private fun new(what: List<String>) {
+        if (what.size == 1) {
+            when (what[0]) {
+                "char", "character", "person", "npc" -> {
+                    val char = Character()
+                    char.name = DnD.getResponse("Name")
+                    char.race = Race.from(DnD.getResponse("Race"))
+                    char.dClass = DClass.from(DnD.getResponse("Class"))
+                    chars.add(char)
+                    DnD.edit()
+                    char.view()
+                }
+                "pc" -> {
+                    val char = Character()
+                    char.playedBy = DnD.getResponse("Player")
+                    char.name = DnD.getResponse("Name")
+                    char.race = Race.from(DnD.getResponse("Race"))
+                    char.dClass = DClass.from(DnD.getResponse("Class"))
+                    chars.add(char)
+                    DnD.edit()
+                    char.view()
+                }
+                "loc", "location", "place" -> {
+                    val place = Place(DnD.getResponse("Name"),DnD.getResponse("Location"))
+                    places.add(place)
+                    DnD.edit()
+                    place.view()
+                }
+                "quest", "mission", "objective" -> {
+                    val quest = Quest(DnD.getResponse("Goal"),DnD.getResponse("Given by"))
+                    quests.add(quest)
+                    DnD.edit()
+                    quest.view()
+                }
+                else -> println("Unrecognized: " + what[0])
+            }
+        }
     }
 }

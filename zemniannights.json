@@ -208,9 +208,10 @@
             "traits": [
             ],
             "notes": [
+                "associated with the hazers somehow"
             ],
-            "status": "",
-            "relationship": ""
+            "status": "healthy",
+            "relationship": "untrustworthy"
         },
         {
             "playedBy": "NPC",
@@ -375,7 +376,7 @@
         {
             "playedBy": "NPC",
             "name": "William",
-            "race": "UNKNOWN",
+            "race": "HUMAN",
             "dClass": "UNKNOWN",
             "level": null,
             "alignment": {
@@ -388,6 +389,64 @@
             ],
             "notes": [
                 "Bartender for the Rookery"
+            ],
+            "status": "hostage of the Mage Killer Squad",
+            "relationship": "possibly hostile"
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Olbo",
+            "race": "ORC",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Vibo",
+            "race": "ORC",
+            "dClass": "BARBARIAN",
+            "level": 7,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "deceased",
+            "relationship": "hostile"
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Private Harven",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "friend from the Blues and Royals"
             ],
             "status": "",
             "relationship": ""
@@ -407,6 +466,14 @@
             "givenBy": "self",
             "status": "Incomplete",
             "notes": [
+            ]
+        },
+        {
+            "goal": "question Audra and the barkeep",
+            "givenBy": "self",
+            "status": "Incomplete",
+            "notes": [
+                "Barkeep's name is william"
             ]
         }
     ],
@@ -431,7 +498,7 @@
             ]
         },
         {
-            "name": "Andromedon",
+            "name": "The Andromedon",
             "location": "middle of the Hollows",
             "notes": [
                 "unusually high number of masked men",

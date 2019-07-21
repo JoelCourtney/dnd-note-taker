@@ -1,4 +1,3 @@
-import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import java.io.File
@@ -10,7 +9,7 @@ fun main() {
 
 class DnD {
     companion object {
-        private var activeCampaign: Campaign? = null
+        private var campaign: Campaign = Campaign("fake", "news")
         private var edited: Boolean = false
 
         private val json = Json(JsonConfiguration(prettyPrint = true))
@@ -19,24 +18,20 @@ class DnD {
             edited = true
         }
 
+        fun run() {
+            play(getResponse("Select Campaign"))
+            campaign.view()
+        }
+
         fun getCommand(prompt: String = ""): List<String> {
-            if (edited && activeCampaign != null) {
-                val jsonData = json.stringify(Campaign.serializer(), activeCampaign!!)
-                File("${activeCampaign!!.name.toLowerCase().replace(" ", "")}.json").writeText(jsonData)
+            if (edited) {
+                val jsonData = json.stringify(Campaign.serializer(), campaign)
+                File("${campaign.name.toLowerCase().replace(" ", "")}.json").writeText(jsonData)
                 edited = false
             }
             print("\n${
-                if (activeCampaign != null)
-                    "${activeCampaign!!.name} "
-                else
-                    ""
-                }>${
-                    if (prompt.isNotEmpty())
-                        " $prompt "
-                    else
-                        ""
-                }> "
-            )
+                if (prompt.isNotEmpty()) "$prompt " else ""
+            }>> ")
             val input = readLine()
             if (input != null) return input.trim(' ').split(" ")
             else exitProcess(0)
@@ -52,94 +47,16 @@ class DnD {
             else exitProcess(0)
         }
 
-        fun run() {
-            while (true) {
-                val line = getCommand()
-                when (line[0].toLowerCase()) {
-                    "" -> println("No command")
-                    "help" -> help(line.subList(1, line.size))
-                    "play" -> play(line.subList(1, line.size).joinToString("").toLowerCase())
-                    "new" -> new(line.subList(1, line.size))
-                    "char", "character", "person", "npc", "pc" -> Character.view(line.subList(1, line.size).joinToString(""), activeCampaign!!.chars, line[0].toLowerCase())
-                    "place", "loc", "location" -> Place.view(line.subList(1,line.size).joinToString(""), activeCampaign!!.places)
-                    "quest", "mission", "objective" -> Quest.view(line.subList(1,line.size).joinToString(""), activeCampaign!!.quests)
-                    "dump" -> println(activeCampaign?.dump())
-                    "xyzzy" -> {
-                        val list = activeCampaign!!.dump().toMutableList()
-                        list.shuffle()
-                        println(list.joinToString(""))
-                    }
-                    else -> println("Unrecognized: " + line[0])
-                }
-            }
-        }
-
-        fun help(what: List<String>) {
-            if (what.isEmpty()) {
-                println("helpy help")
-            }
-        }
-
         fun play(what: String) {
-            activeCampaign = json.parse(Campaign.serializer(), File("${what.replace(" ", "")}.json").readText())
-        }
-
-        fun new(what: List<String>) {
-            if (what.size == 1) {
-                when (what[0]) {
-                    "campaign" -> {
-                        val name = getResponse("Name")
-                        if (name.isEmpty()) {
-                            println("enter a flippin name, son.")
-                            new(what)
-                        }
-                        activeCampaign = Campaign(name, getResponse("DM"))
-                    }
-                    "char", "character", "person", "npc" -> {
-                        if (activeCampaign != null) {
-                            val char = Character()
-                            char.name = getResponse("Name")
-                            char.race = Race.from(getResponse("Race"))
-                            char.dClass = DClass.from(getResponse("Class"))
-                            activeCampaign!!.chars.add(char)
-                            edit()
-                        } else {
-                            println("Please select a campaign first.")
-                        }
-                    }
-                    "pc" -> {
-                        if (activeCampaign != null) {
-                            val char = Character()
-                            char.playedBy = getResponse("Player")
-                            char.name = getResponse("Name")
-                            char.race = Race.from(getResponse("Race"))
-                            char.dClass = DClass.from(getResponse("Class"))
-                            activeCampaign!!.chars.add(char)
-                            edit()
-                        } else {
-                            println("Please select a campaign first.")
-                        }
-                    }
-                    "loc", "location", "place" -> {
-                        if (activeCampaign != null) {
-                            val place = Place(getResponse("Name"),getResponse("Location"))
-                            activeCampaign!!.places.add(place)
-                            edit()
-                        } else {
-                            println("Please select a campaign first")
-                        }
-                    }
-                    "quest", "mission", "objective" -> {
-                        if (activeCampaign != null) {
-                            val quest = Quest(getResponse("Goal"),getResponse("Given by"))
-                            activeCampaign!!.quests.add(quest)
-                            edit()
-                        } else {
-                            println("Please select a campaign first")
-                        }
-                    }
-                    else -> println("Unrecognized: " + what[0])
+            if (what != "new")
+                campaign = json.parse(Campaign.serializer(), File("${what.replace(" ", "").toLowerCase()}.json").readText())
+            else {
+                var name = getResponse("Name")
+                while (name.isEmpty()) {
+                    name = getResponse("Enter a flipping name, son")
                 }
+                campaign = Campaign(name, getResponse("DM"))
+                edit()
             }
         }
 

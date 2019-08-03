@@ -208,6 +208,7 @@
             "traits": [
             ],
             "notes": [
+                "unwitting accomplice to the hazers",
                 "associated with the hazers somehow"
             ],
             "status": "healthy",
@@ -447,6 +448,30 @@
             ],
             "notes": [
                 "friend from the Blues and Royals"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Monky assasin",
+            "race": "UNKNOWN",
+            "dClass": "MONK",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Fancy ass +2 dagger"
+            ],
+            "traits": [
+                "female",
+                "4' 5\" ish",
+                "largish green eyes"
+            ],
+            "notes": [
+                "killed Sergent Rain like a little bitch"
             ],
             "status": "",
             "relationship": ""

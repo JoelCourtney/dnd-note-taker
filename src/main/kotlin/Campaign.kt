@@ -15,27 +15,33 @@ data class Campaign (
         res += "Name: $name"
         res += "\nDM: $dm"
         if (chars.isNotEmpty()) {
-            res += "\n\n***CHARACTERS***"
+            res += "\n\n\n***CHARACTERS***\n"
             for (char in chars) {
-                res += "\n${char.dump()}"
+                res += "\n\n${char.dump()}"
             }
         }
         if (quests.isNotEmpty()) {
-            res += "\n\n***QUESTS***"
+            res += "\n\n\n***QUESTS***\n"
             for (quest in quests) {
-                res += "\n${quest.dump()}"
+                res += "\n\n${quest.dump()}"
             }
         }
         if (events.isNotEmpty()) {
-            res += "\n\n***EVENTS***"
+            res += "\n\n\n***EVENTS***\n"
             for (event in events) {
-                res += "\n$event"
+                res += "\n\n$event"
             }
         }
         if (places.isNotEmpty()) {
-            res += "\n\n***PLACES***"
+            res += "\n\n\n***PLACES***\n"
             for (place in places) {
-                res += "\n${place.dump()}"
+                res += "\n\n${place.dump()}"
+            }
+        }
+        if (quotes.isNotEmpty()) {
+            res += "\n\n\n***QUOTES***\n"
+            for (quote in quotes) {
+                res += "\n\n${quote.dump()}"
             }
         }
         return res
@@ -50,6 +56,8 @@ data class Campaign (
                 "char", "character", "person", "npc", "pc" -> Character.search(line.subList(1, line.size).joinToString(""), chars, line[0].toLowerCase())
                 "place", "loc", "location" -> Place.search(line.subList(1,line.size).joinToString(""), places)
                 "quest", "mission", "objective" -> Quest.search(line.subList(1,line.size).joinToString(""), quests)
+                "event", "plot" -> Event.search(line.subList(1, line.size).joinToString(""), events)
+                "quote" -> Quote.search(line.subList(1, line.size).joinToString(""), quotes)
                 "dump" -> println(dump())
                 "xyzzy" -> {
                     val list = dump().toMutableList()
@@ -68,9 +76,13 @@ data class Campaign (
                     for (quest in quests.sortedBy{it.status})
                         println(quest.goal)
                 }
-                "events", "plot" -> {
+                "events" -> {
                     for (event in events)
                         println(event.what)
+                }
+                "quotes" -> {
+                    for (quote in quotes)
+                        println(quote.text)
                 }
                 else -> println("Unrecognized: " + line[0])
             }
@@ -110,6 +122,18 @@ data class Campaign (
                     quests.add(quest)
                     DnD.edit()
                     quest.view()
+                }
+                "event" -> {
+                    val event = Event(DnD.getResponse("What happened"), DnD.getResponse("Where"))
+                    events.add(event)
+                    DnD.edit()
+                    event.view()
+                }
+                "quote" -> {
+                    val quote = Quote(DnD.getResponse("Text"), DnD.getResponse("Who's so fucking wise"))
+                    quotes.add(quote)
+                    DnD.edit()
+                    quote.view()
                 }
                 else -> println("Unrecognized: " + what[0])
             }

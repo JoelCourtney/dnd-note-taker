@@ -5,7 +5,7 @@ enum class Race(val type: String) {
     GNOME("Gnome"),
     HALFELF("Half-Elf"),
     HALFLING("Halfling"),
-    HALFORC("Halforc"),
+    HALFORC("Half-Orc"),
     HUMAN("Human"),
     TIEFLING("Tiefling"),
     AARAKOCRA("Aarakocra"),
@@ -34,6 +34,8 @@ enum class Race(val type: String) {
     SIMICHYBRID("Simic Hybrid"),
     VEDALKEN("Vedalken"),
     VERDAN("Verdan"),
+    DAMPEAR("Dampear"),
+    DROW("Drow"),
     UNKNOWN("Unknown");
 
     companion object {

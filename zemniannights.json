@@ -475,6 +475,105 @@
             ],
             "status": "",
             "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "The General",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "is general"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Siven Aurelia",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Minister of Internal Affairs"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Light",
+            "race": "ELF",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "author of Interactions of Automatons and Society"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Horatio",
+            "race": "HUMAN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "owner of Jig's fanboy sketchbook"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Vrey",
+            "race": "DROW",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
         }
     ],
     "quests": [

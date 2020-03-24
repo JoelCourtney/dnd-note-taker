@@ -1,0 +1,174 @@
+{
+    "name": "austins",
+    "dm": "Austin",
+    "chars": [
+        {
+            "playedBy": "Joel",
+            "name": "Ase",
+            "race": "AARAKOCRA",
+            "dClass": "MONK",
+            "level": 4,
+            "alignment": {
+                "disposition": "CHAOTIC",
+                "morality": "NEUTRAL"
+            },
+            "inventory": [
+                "Immovable Rod",
+                "Map of hyarria with warehouse marked",
+                "Katana (longsword)",
+                "Longbow"
+            ],
+            "traits": [
+                "hates normal birds."
+            ],
+            "notes": [
+                "about 90 lbs, just under 5 ft tall"
+            ],
+            "status": "fine",
+            "relationship": "me"
+        },
+        {
+            "playedBy": "Allyson",
+            "name": "Mira",
+            "race": "GENASI",
+            "dClass": "SORCERER",
+            "level": 4,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "fine",
+            "relationship": "friend"
+        },
+        {
+            "playedBy": "Erica",
+            "name": "Minerva",
+            "race": "TIEFLING",
+            "dClass": "UNKNOWN",
+            "level": 4,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Bag of Tricks"
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "fine",
+            "relationship": ""
+        },
+        {
+            "playedBy": "David",
+            "name": "Torrir",
+            "race": "SHIFTER",
+            "dClass": "BARBARIAN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+                "Alchemy Jug"
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "Bear shifter"
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "Reece",
+            "name": "Daelish",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "Hayden",
+            "name": "Dryft",
+            "race": "SHIFTER",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+            ],
+            "status": "",
+            "relationship": ""
+        },
+        {
+            "playedBy": "NPC",
+            "name": "Jaliar",
+            "race": "UNKNOWN",
+            "dClass": "UNKNOWN",
+            "level": null,
+            "alignment": {
+                "disposition": "UNKNOWN",
+                "morality": "UNKNOWN"
+            },
+            "inventory": [
+            ],
+            "traits": [
+            ],
+            "notes": [
+                "gave warehouse quest"
+            ],
+            "status": "",
+            "relationship": ""
+        }
+    ],
+    "quests": [
+        {
+            "goal": "break up a deal",
+            "givenBy": "Jaliar",
+            "status": "in progress",
+            "notes": [
+                "capture the participants",
+                "try not to alert the authorities",
+                "at warehouse on map, at 1030 in the morning"
+            ]
+        }
+    ],
+    "events": [
+    ],
+    "places": [
+        {
+            "name": "Hyarria",
+            "location": "Nibleera",
+            "notes": [
+                "large coastal city"
+            ]
+        }
+    ],
+    "quotes": [
+    ]
+}

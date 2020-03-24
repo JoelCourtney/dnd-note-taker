@@ -41,7 +41,7 @@ class Character : Summarizable {
     }
 
     fun dump(): String {
-        var res: String = ""
+        var res = ""
         if (playedBy != "NPC")
             res += "Player: $playedBy\n"
         res += "Name: $name"
@@ -87,7 +87,7 @@ class Character : Summarizable {
                     "align", "alignment" -> println(alignment.toString())
                     "stat", "status" -> println(status)
                     "rel", "relation", "relationship" -> println(relationship)
-                    "inv", "inventory" -> {
+                    "inv", "inventory", "items" -> {
                         var i = 1
                         for (item in inventory) {
                             println("${i++}: $item")
